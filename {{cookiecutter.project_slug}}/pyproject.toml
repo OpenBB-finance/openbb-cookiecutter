@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "{{ cookiecutter.project_slug }}"
+version = "0.1.0"
+description = ""
+authors = ["{{ full_name }} <{{ email }}>"]
+readme = "README.md"
+packages = [{ include = "{{ cookiecutter.package_name }}" }]
+
+[tool.poetry.dependencies]
+python = ">=3.8.1,<3.12"
+openbb-core = { path = "../../sdk/core" }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.plugins."openbb_core_extension"]
+{{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.{{ cookiecutter.package_name }}_router:router"
+
+{% if cookiecutter.data_retrieval == 'y' %}
+[tool.poetry.plugins."openbb_core_extension"]
+{{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.{{ cookiecutter.package_name }}_router:router"
+{% endif %}
