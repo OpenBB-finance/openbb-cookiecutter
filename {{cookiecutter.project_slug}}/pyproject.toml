@@ -2,7 +2,7 @@
 name = "{{ cookiecutter.project_slug }}"
 version = "0.1.0"
 description = ""
-authors = ["{{ full_name }} <{{ email }}>"]
+authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
 readme = "README.md"
 packages = [{ include = "{{ cookiecutter.package_name }}" }]
 
@@ -14,10 +14,12 @@ openbb-core = { path = "../../sdk/core" }
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+{% if cookiecutter.add_command == 'y' %}
 [tool.poetry.plugins."openbb_core_extension"]
 {{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.{{ cookiecutter.package_name }}_router:router"
+{% endif %}
 
-{% if cookiecutter.data_retrieval == 'y' %}
-[tool.poetry.plugins."openbb_core_extension"]
+{% if cookiecutter.add_provider == 'y' %}
+[tool.poetry.plugins."openbb_provider_extension"]
 {{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.{{ cookiecutter.package_name }}_router:router"
 {% endif %}
