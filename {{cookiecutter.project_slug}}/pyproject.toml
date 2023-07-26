@@ -13,13 +13,10 @@ openbb-core = { path = "../../sdk/core" }
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-{% if cookiecutter.add_command == 'y' %}
+{% if cookiecutter.add_command == "yes" %}
 [tool.poetry.plugins."openbb_core_extension"]
 {{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.{{ cookiecutter.package_name }}_router:router"
-{% endif %}
-
-{% if cookiecutter.add_provider == 'y' %}
+{% endif %}{% if cookiecutter.add_provider == "yes" %}
 [tool.poetry.plugins."openbb_provider_extension"]
 {{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.{{ cookiecutter.package_name }}_router:router"
 {% endif %}
