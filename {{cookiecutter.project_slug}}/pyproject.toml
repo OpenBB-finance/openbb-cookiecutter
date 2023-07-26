@@ -15,8 +15,8 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 {% if cookiecutter.add_command == "yes" %}
 [tool.poetry.plugins."openbb_core_extension"]
-{{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.{{ cookiecutter.package_name }}_router:router"
+{{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.router:router"
 {% endif %}{% if cookiecutter.add_provider == "yes" %}
 [tool.poetry.plugins."openbb_provider_extension"]
-{{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.{{ cookiecutter.package_name }}_router:router"
+{{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.provider:{{ cookiecutter.package_name }}_provider"
 {% endif %}
