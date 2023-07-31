@@ -1,6 +1,8 @@
 # OpenBB SDK Extensions Cookiecutter Template
 
-This repository hosts a Cookiecutter template for setting up a new OpenBB SDK extension. This template helps in standardizing the structure of extensions and makes the setup process more efficient.
+[Cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.2/) is a command-line utility that creates projects from templates.
+
+This repo hosts the Cookiecutter template for setting up a new OpenBB SDK extension. This template helps in standardizing the structure of extensions and makes the setup process more efficient.
 
 ## Template Structure
 
@@ -21,7 +23,7 @@ Before creating a new project using this template, ensure that you have Python i
 
 1. Create a new virtual environment. This isolates the dependencies for this project from your other Python projects.
 
-    For Linux or MacOS systems:
+   For Linux or MacOS systems:
 
    ```bash
    python3 -m venv venv
@@ -35,16 +37,23 @@ Before creating a new project using this template, ensure that you have Python i
    .\venv\Scripts\activate
    ```
 
-2. Install Cookiecutter:
+2. Install Cookiecutter and Poetry:
 
    ```bash
-   pip install cookiecutter
+   pip install cookiecutter poetry
    ```
 
 3. Generate your new project:
 
    ```bash
    cookiecutter https://github.com/OpenBB-finance/openbb-cookiecutter
+   ```
+
+4. Go into the generated project directory and install the project's dependencies:
+
+   ```bash
+   cd <project-name>
+   poetry install
    ```
 
 Remember to deactivate the virtual environment when you're finished by running `deactivate` in your terminal.

@@ -1,0 +1,15 @@
+"""{{cookiecutter.project_name}} provider module."""
+
+
+from openbb_provider.abstract.provider import Provider
+
+from {{cookiecutter.package_name}}.models.example import ExampleFetcher
+
+# mypy: disable-error-code="list-item"
+
+provider = Provider(
+    name="{{cookiecutter.package_name}}",
+    description="Data provider for {{cookiecutter.project_name}}.",
+    required_credentials=["api_key"],
+    fetcher_list=[ExampleFetcher],
+)
