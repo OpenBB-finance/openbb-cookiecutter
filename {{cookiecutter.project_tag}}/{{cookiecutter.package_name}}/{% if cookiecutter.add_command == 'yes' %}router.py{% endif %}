@@ -1,3 +1,5 @@
+"""{{cookiecutter.project_name}} router command example."""
+
 from openbb_core.app.model.command_context import CommandContext
 from openbb_core.app.model.command_output import CommandOutput
 from openbb_core.app.provider_interface import (
@@ -11,6 +13,8 @@ from pydantic import BaseModel
 
 router = Router(prefix="")
 
+# The model name can be found inside every provider's `__init__.py` file as part
+# of the `fetcher_dict`.
 
 # pylint: disable=unused-argument
 @router.command(model="Example")

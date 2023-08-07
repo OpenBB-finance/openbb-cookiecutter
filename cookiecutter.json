@@ -2,17 +2,26 @@
   "full_name": "Super Quant",
   "email": "super@duper.quant",
   "project_name": "Super Quant",
-  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "project_tag": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
   "package_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
-  "add_provider": ["yes", "no"],
-  "add_command": ["yes", "no"],
-  "process_data": ["yes", "no"],
+  "add_provider": [
+    "yes",
+    "no"
+  ],
+  "add_command": [
+    "yes",
+    "no"
+  ],
+  "process_data": [
+    "yes",
+    "no"
+  ],
   "_template": "{% now 'utc', '%Y%m%d%H%M%S' %}",
   "__prompts__": {
     "full_name": "Enter your full name",
     "email": "Enter your email",
     "project_name": "Enter the extension name",
-    "project_slug": "Enter the project slug",
+    "project_tag": "Enter the project tag",
     "package_name": "Enter the package name",
     "add_provider": {
       "__prompt__": "Will your extension retrieve data from an API, a database or a file?",
