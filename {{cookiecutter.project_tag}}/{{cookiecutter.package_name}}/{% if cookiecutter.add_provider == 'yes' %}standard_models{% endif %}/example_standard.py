@@ -1,7 +1,7 @@
 """Example OpenBB Standard.
 
-Inside the `openbb_sdk/sdk/provider/openbb_provider/models` you will find all the
-standardized data models that are used by the OpenBB SDK.
+Inside the `openbb_sdk/sdk/provider/openbb_provider/standard_models` you will find all
+the standardized data models that are used by the OpenBB SDK.
 
 The standardized models are used to create an unified data structure that can be
 expected by the user on every call/return of a command. This way, the user can

@@ -25,7 +25,7 @@ This file has example code and interacts with an OpenBB example standard.
 from typing import Dict, List, Optional, Any
 from pydantic import Field
 
-from {{cookiecutter.package_name}}.models.example_standard import (
+from {{cookiecutter.package_name}}.standard_models.example_standard import (
     StandardData, StandardQueryParams
 )
 from openbb_provider.abstract.fetcher import Fetcher
