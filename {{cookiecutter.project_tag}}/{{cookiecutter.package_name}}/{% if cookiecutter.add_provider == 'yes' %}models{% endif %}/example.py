@@ -30,7 +30,7 @@ from {{cookiecutter.package_name}}.models.example_standard import (
 )
 from openbb_provider.abstract.fetcher import Fetcher
 
-class {{cookiecutter.package_name}}QueryParams(StandardQueryParams):
+class ExampleQueryParams(StandardQueryParams):
     """Example provider query.
 
     This is the definition of our query parameters that are specific to this provider.
@@ -42,7 +42,7 @@ class {{cookiecutter.package_name}}QueryParams(StandardQueryParams):
         default=2, description="The number of results to return per page."
     )  # We use pydantic's Field to add a description to the parameter and default value
 
-class {{cookiecutter.package_name}}Data(StandardData):
+class ExampleData(StandardData):
     """Example provider data.
 
     This is the output data in the format we want to use it.
@@ -65,10 +65,8 @@ class {{cookiecutter.package_name}}Data(StandardData):
 
 class ExampleFetcher(
     Fetcher[
-        StandardQueryParams,
-        StandardData,
-        {{cookiecutter.package_name}}QueryParams,
-        {{cookiecutter.package_name}}Data,
+        ExampleQueryParams,
+        ExampleData,
     ]
 ):
     """Example Fetcher class.
@@ -79,21 +77,21 @@ class ExampleFetcher(
     """
 
     @staticmethod
-    def transform_query(params: Dict[str, Any]) -> {{cookiecutter.package_name}}QueryParams:
+    def transform_query(params: Dict[str, Any]) -> ExampleQueryParams:
         """Define example transform_query.
 
         Here we can pre-process the query parameters and add any extra parameters that
         will be used inside the extract_data method.
         """
         # Both the standard and provider-specific query parameters are unpacked below.
-        return {{cookiecutter.package_name}}QueryParams(**params)
+        return ExampleQueryParams(**params)
 
     @staticmethod
     def extract_data(
-        query: {{cookiecutter.package_name}}QueryParams,
+        query: ExampleQueryParams,
         credentials: Optional[Dict[str, str]],
         **kwargs: Any,
-    ) -> {{cookiecutter.package_name}}Data:
+    ) -> ExampleData:
         """Define example extract_data.
 
         Here we make the actual request to the data provider and receive the raw data.
@@ -124,10 +122,10 @@ class ExampleFetcher(
             },
         ]
 
-        return [{{cookiecutter.package_name}}Data(**d) for d in example_response]
+        return [ExampleData(**d) for d in example_response]
 
     @staticmethod
-    def transform_data(data: List[{{cookiecutter.package_name}}Data]) -> List[{{cookiecutter.package_name}}Data]:
+    def transform_data(data: List[ExampleData]) -> List[ExampleData]:
         """Define example transform_data.
 
         Here we return data as-is, but you can transform it into a different format if
