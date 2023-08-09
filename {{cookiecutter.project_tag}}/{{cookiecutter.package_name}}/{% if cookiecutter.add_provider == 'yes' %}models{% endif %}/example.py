@@ -1,15 +1,6 @@
 """Example Data Integration.
 
-When we retrieve the data from an external resource we go through 3 steps:
-
-1. Define our request/query parameters.
-2. Make the request to receive the raw data.
-3. Transform the data into a specific format that we want for our use case.
-
-Note: The format of the QueryParams and Data is defined by a pydantic model that can
-be entirely custom, or inherit from the OpenBB standardized models.
-
-The OpenBB SDK equips developers with tools to streamline the integration process.
+The OpenBB SDK equips developers with tools to streamline their integration process.
 Specifically, developers are required to:
 
 1. Define the request/query parameters.
@@ -18,6 +9,9 @@ Specifically, developers are required to:
 
 The emphasis on the first two steps is to ensure developers fully understand their data,
 encapsulated by the "Know Your Data" principle.
+
+Note: The format of the QueryParams and Data is defined by a pydantic model that can
+be entirely custom, or inherit from the OpenBB standardized models.
 
 This file has example code and interacts with an OpenBB example standard.
 """
