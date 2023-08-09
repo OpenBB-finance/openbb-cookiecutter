@@ -46,7 +46,7 @@ Before creating a new project using this template, ensure that you have Python i
 3. Generate your new project:
 
    ```bash
-   cookiecutter https://github.com/OpenBB-finance/openbb-cookiecutter
+   cookiecutter -f https://github.com/OpenBB-finance/openbb-cookiecutter
    ```
 
 4. Go into the generated project directory and install the project's dependencies:
