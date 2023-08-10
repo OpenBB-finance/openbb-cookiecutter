@@ -56,6 +56,13 @@ Before creating a new project using this template, ensure that you have Python i
    poetry install
    ```
 
+5. Install your package:
+
+   ```python
+   import <package-name>
+   <package-name>.install()
+   ```
+
 Remember to deactivate the virtual environment when you're finished by running `deactivate` in your terminal.
 
 ## Contributing
