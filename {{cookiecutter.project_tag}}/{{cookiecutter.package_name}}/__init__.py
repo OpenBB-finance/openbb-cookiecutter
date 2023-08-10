@@ -25,3 +25,8 @@ def install():
         PackageBuilder  # pylint: disable=import-outside-toplevel
 
     PackageBuilder.build()
+
+from openbb_core.app.static.app_factory import create_app as __create_app
+
+sdk = __create_app()
+obb = sdk

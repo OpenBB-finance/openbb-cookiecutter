@@ -63,6 +63,13 @@ Before creating a new project using this template, ensure that you have Python i
    <package-name>.install()
    ```
 
+6. Import obb and use your extension:
+
+   ```python
+   from <package-name> import obb
+   obb.<package-name>.<command-name>()
+   ```
+
 Remember to deactivate the virtual environment when you're finished by running `deactivate` in your terminal.
 
 ## Contributing
