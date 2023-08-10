@@ -8,13 +8,12 @@ from {{cookiecutter.package_name}}.models.example import ExampleFetcher
 provider = Provider(
     name="{{cookiecutter.package_name}}",
     description="Data provider for {{cookiecutter.project_name}}.",
-    # The required_credentials can be left out if the provider doesn't need credentials.
-    # If the provider requires the use of 2 or more credentials, write each as a new
-    # entry inside the list.
+    # Only add 'required_credentials' if they are needed.
+    # For multiple login details, list them all here.
     required_credentials=["api_key"],
     website="https://{{cookiecutter.project_tag}}.com",
-    # Below we define the fetchers that inform us of our provider's coverage.
-    # The dict key is the name of the fetcher that will be used in the router.py file.
+    # Here, we list out the fetchers showing what our provider can get.
+    # The dictionary key is the fetcher's name, used in the `router.py`.
     fetcher_dict={
         "Example": ExampleFetcher,
     }

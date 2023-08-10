@@ -1,21 +1,18 @@
 """Example OpenBB Standard.
 
-Inside the `openbb_sdk/sdk/provider/openbb_provider/standard_models` you will find all
-the standardized data models that are used by the OpenBB SDK.
+Look inside `openbb_sdk/sdk/provider/openbb_provider/standard_models` to see
+standardized data structures from the OpenBB SDK.
 
-The standardized models are used to create an unified data structure that can be
-expected by the user on every call/return of a command. This way, the user can
-know which parameters and return fields will always be available and which ones
-are specific to each provider.
+These standard models help give a consistent shape to data. This means that users
+can know what to expect every time they use a command. They can tell which parts
+are standard and which parts might change based on the provider.
 
-Below, we have an example of the standardized QueryParams and Data models for our
-example command.
+If a provider has more fields that are not in the standard models, they can inherit the
+standard and add them. For QueryParams, these are called extra_params. Any other added
+details will just show up with the regular output data.
 
-In the case that the provider has extra fields that are not covered by the standardized
-models, the provider can create its own models. This will be exposed as extra_params in
-the case of QueryParams and any extra return fields will be appended to the output data.
+Here's a basic example of the QueryParams and Data structures.
 """
-
 from openbb_provider.abstract.data import Data
 from openbb_provider.abstract.query_params import QueryParams
 from pydantic import Field, PositiveFloat

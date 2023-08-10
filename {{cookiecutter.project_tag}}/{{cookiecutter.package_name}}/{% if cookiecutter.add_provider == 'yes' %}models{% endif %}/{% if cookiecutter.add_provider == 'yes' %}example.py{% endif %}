@@ -1,19 +1,19 @@
 """Example Data Integration.
 
-The OpenBB SDK equips developers with tools to streamline their integration process.
-Specifically, developers are required to:
+The OpenBB SDK gives developers easy tools for integration.
 
+To use it, developers should:
 1. Define the request/query parameters.
 2. Define the resulting data schema.
 3. Define how to fetch raw data.
 
-The emphasis on the first two steps is to ensure developers fully understand their data,
-encapsulated by the "Know Your Data" principle.
+First 2 steps make sure developers really get to know their data.
+This is called the "Know Your Data" principle.
 
 Note: The format of the QueryParams and Data is defined by a pydantic model that can
 be entirely custom, or inherit from the OpenBB standardized models.
 
-This file has example code and interacts with an OpenBB example standard.
+This file has sample code and shows how the OpenBB standard works.
 """
 
 from typing import Dict, List, Optional, Any
@@ -28,23 +28,22 @@ class ExampleQueryParams(StandardQueryParams):
     """Example provider query.
 
     This is the definition of our query parameters that are specific to this provider.
-    Because it shares the `symbol` parameter with the standardized model from which
-    we inherit, we only need to add extra parameters that are provider-specific.
+    Since it already has the `symbol` field from the standard model, we just add any
+    new ones specific to this provider.
     """
 
     limit: Optional[int] = Field(
         default=2, description="The number of results to return per page."
-    )  # We use pydantic's Field to add a description to the parameter and default value
+    )
 
 class ExampleData(StandardData):
-    """Example provider data.
+    """Sample provider data.
 
-    This is the output data in the format we want to use it.
-    The example data schema is the usual OHLCV data.
+    This is how we want to see our results. It follows the typical OHLCV format.
     """
 
-    # As our data is the same as the standardized one, all we need to do is
-    # declare the Config class to map the field names to the provider's data.
+    # Since our data matches the standard one, we just set up how the field names
+    # connect to the provider's data.
     class Config:
         fields = {
             "open": "o",
@@ -54,8 +53,7 @@ class ExampleData(StandardData):
             "volume": "v",
         }
 
-    # In the case that you have fields that are not covered by the standardized model,
-    # you can add them here.
+    # If there are any extra fields not in the standard model, put them here.
 
 class ExampleFetcher(
     Fetcher[
@@ -89,8 +87,7 @@ class ExampleFetcher(
         """Define example extract_data.
 
         Here we make the actual request to the data provider and receive the raw data.
-        In the case that you specified inside your Provider class that it requires
-        credentials, you can access them here.
+        If you said your Provider class needs credentials you can get them here.
         """
         api_key = (
             credentials.get("{{cookiecutter.package_name}}_api_key")
@@ -122,7 +119,7 @@ class ExampleFetcher(
     def transform_data(data: List[ExampleData]) -> List[ExampleData]:
         """Define example transform_data.
 
-        Here we return data as-is, but you can transform it into a different format if
-        you wish. This part is useful for any data post-processing that you need to do.
+        Right now, we're keeping the data as it is. But you can change its shape
+        here if you want. This is good for any final touches on the data.
         """
         return data

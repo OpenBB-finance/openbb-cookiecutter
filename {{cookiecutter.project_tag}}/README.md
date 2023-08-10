@@ -1,8 +1,8 @@
-# OpenBB SDK v4 Financial Framework Cookiecutter Template
+# OpenBB SDK v4 Cookiecutter Template
 
 ## Introduction
 
-This is the generated cookiecutter template for the OpenBB SDK v4 Financial Framework.
+This is the generated cookiecutter template for the OpenBB SDK v4.
 It is used to help you create a new project that can be integrated into the existing
 structure of the SDK.
 
