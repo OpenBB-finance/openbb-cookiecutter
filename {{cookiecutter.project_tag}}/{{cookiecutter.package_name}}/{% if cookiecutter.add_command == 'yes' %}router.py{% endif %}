@@ -3,7 +3,7 @@ from typing import List
 
 import pandas as pd
 from openbb_core.app.model.command_context import CommandContext
-from openbb_core.app.model.command_output import CommandOutput
+from openbb_core.app.model.obbject import Obbject
 from openbb_core.app.provider_interface import (
     ExtraParams,
     ProviderChoices,
@@ -27,19 +27,19 @@ def example(
     provider_choices: ProviderChoices,
     standard_params: StandardParams,
     extra_params: ExtraParams,
-) -> CommandOutput[BaseModel]:
+) -> Obbject[BaseModel]:
     """Example Data."""
-    return CommandOutput(results=Query(**locals()).execute())
+    return Obbject(results=Query(**locals()).execute())
 
 {% if cookiecutter.process_data == 'yes' %}
 @router.command(methods=["POST"])
 def example_average(
     data: List[Data],
     column: str = "close",
-) -> CommandOutput[List[Data]]:
+) -> Obbject[List[Data]]:
     """Compute example average of a column."""
     df = basemodel_to_df(data)
 
     results = df[column].mean()
-    return CommandOutput(results=results)
+    return Obbject(results=results)
 {% endif %}
