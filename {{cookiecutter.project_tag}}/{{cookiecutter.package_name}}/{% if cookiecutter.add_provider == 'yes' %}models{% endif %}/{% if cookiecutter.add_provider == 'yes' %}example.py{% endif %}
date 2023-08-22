@@ -83,7 +83,7 @@ class ExampleFetcher(
         query: ExampleQueryParams,
         credentials: Optional[Dict[str, str]],
         **kwargs: Any,
-    ) -> ExampleData:
+    ) -> List[dict]:
         """Define example extract_data.
 
         Here we make the actual request to the data provider and receive the raw data.
@@ -113,13 +113,14 @@ class ExampleFetcher(
             },
         ]
 
-        return [ExampleData(**d) for d in example_response]
+        return example_response
+
 
     @staticmethod
-    def transform_data(data: List[ExampleData]) -> List[ExampleData]:
+    def transform_data(data: List[dict]) -> List[ExampleData]:
         """Define example transform_data.
 
-        Right now, we're keeping the data as it is. But you can change its shape
-        here if you want. This is good for any final touches on the data.
+        Right now, we're converting the data to fit our desired format.
+        You can apply other transformations to it here.
         """
-        return data
+        return [ExampleData(**d) for d in data]
