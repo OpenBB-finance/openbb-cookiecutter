@@ -8,7 +8,7 @@ packages = [{ include = "{{ cookiecutter.package_name }}" }]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<3.12"
-openbb-core = { path = "/Users/igor/Documents/GitHub/OpenBBTerminal/openbb_sdk/sdk/core" }
+openbb-core = { path = "openbb_sdk" }
 
 [build-system]
 requires = ["poetry-core"]
@@ -16,3 +16,6 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.plugins."openbb_core_extension"]
 {{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.router:router"
+
+[tool.poetry.plugins."openbb_provider_extension"]
+{{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}:provider"

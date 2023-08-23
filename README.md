@@ -68,10 +68,17 @@ Before creating a new project using this template, ensure that you have Python i
    ```python
    from openbb_core.app.static.app_factory import create_app as __create_app
 
-   sdk = __create_app()
-   obb = sdk
+   obb = __create_app()
    obb.<package-name>.<command-name>()
    ```
+
+7. To launch the API, run:
+
+   ```bash
+   uvicorn openbb_core.api.rest_api:app --host 0.0.0.0 --port 8000 --reload
+   ```
+
+   Go to `http://localhost:8000/docs` to view the API documentation.
 
 Remember to deactivate the virtual environment when you're finished by running `deactivate` in your terminal.
 
