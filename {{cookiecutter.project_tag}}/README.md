@@ -19,10 +19,8 @@ Depending on your choices during the cookiecutter generation process, you will h
 different project structure that is catered to your needs. It is recommended that you
 check out our example files to learn more about how to build your project.
 
-Based on your choices, we recommend you check out the files in the following order:
+We recommend you check out the files in the following order:
 
-* `README.md`
-{% if cookiecutter.add_provider == 'yes'%}* `{{cookiecutter.package_name}}/standard_models/example_standard.py`
 * `{{cookiecutter.package_name}}/models/example.py`
 * `{{cookiecutter.package_name}}/__init__.py`
-{% endif %}{% if cookiecutter.add_command == 'yes'%}* `{{cookiecutter.package_name}}/router.py`{% endif %}
+* `{{cookiecutter.package_name}}/router.py`

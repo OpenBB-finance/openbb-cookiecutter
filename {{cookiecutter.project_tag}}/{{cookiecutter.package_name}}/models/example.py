@@ -13,47 +13,42 @@ This is called the "Know Your Data" principle.
 Note: The format of the QueryParams and Data is defined by a pydantic model that can
 be entirely custom, or inherit from the OpenBB standardized models.
 
-This file has sample code and shows how the OpenBB standard works.
+This file shows an example of how to integrate data from a provider.
 """
 
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
+from openbb_provider.abstract.data import Data
+from openbb_provider.abstract.fetcher import Fetcher
+from openbb_provider.abstract.query_params import QueryParams
 from pydantic import Field
 
-from {{cookiecutter.package_name}}.standard_models.example_standard import (
-    StandardData, StandardQueryParams
-)
-from openbb_provider.abstract.fetcher import Fetcher
 
-class ExampleQueryParams(StandardQueryParams):
+class ExampleQueryParams(QueryParams):
     """Example provider query.
 
     This is the definition of our query parameters that are specific to this provider.
-    Since it already has the `symbol` field from the standard model, we just add any
-    new ones specific to this provider.
+    We use this class to create our own parameters that will provided as input to the
+    command.
     """
 
-    limit: Optional[int] = Field(
-        default=2, description="The number of results to return per page."
-    )
+    symbol: str = Field(description="Symbol to query.")
 
-class ExampleData(StandardData):
+
+class ExampleData(Data):
     """Sample provider data.
 
-    This is how we want to see our results. It follows the typical OHLCV format.
+    The fields are displayed as-is in the output of the command. In this case, its the
+    Open, High, Low, Close and Volume data.
     """
 
-    # Since our data matches the standard one, we just set up how the field names
-    # connect to the provider's data.
-    class Config:
-        fields = {
-            "open": "o",
-            "high": "h",
-            "low": "l",
-            "close": "c",
-            "volume": "v",
-        }
+    o: float = Field(description="Open price.")
+    h: float = Field(description="High price.")
+    l: float = Field(description="Low price.")
+    c: float = Field(description="Close price.")
+    v: float = Field(description="Volume.")
+    d: str = Field(description="Date")
 
-    # If there are any extra fields not in the standard model, put them here.
 
 class ExampleFetcher(
     Fetcher[
@@ -64,8 +59,6 @@ class ExampleFetcher(
     """Example Fetcher class.
 
     This class is responsible for the actual data retrieval.
-    It handles standardization of input arguments (the query parameters), fetching the
-    data and converting it into a format that we want.
     """
 
     @staticmethod
@@ -75,7 +68,6 @@ class ExampleFetcher(
         Here we can pre-process the query parameters and add any extra parameters that
         will be used inside the extract_data method.
         """
-        # Both the standard and provider-specific query parameters are unpacked below.
         return ExampleQueryParams(**params)
 
     @staticmethod
@@ -103,6 +95,7 @@ class ExampleFetcher(
                 "l": 1,
                 "c": 4,
                 "v": 5,
+                "d": "August 23, 2023",
             },
             {
                 "o": 4,
@@ -110,11 +103,11 @@ class ExampleFetcher(
                 "l": 3,
                 "c": 6,
                 "v": 10,
+                "d": "August 24, 2023",
             },
         ]
 
         return example_response
-
 
     @staticmethod
     def transform_data(data: List[dict]) -> List[ExampleData]:

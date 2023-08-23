@@ -66,7 +66,10 @@ Before creating a new project using this template, ensure that you have Python i
 6. Import obb and use your extension:
 
    ```python
-   from <package-name> import obb
+   from openbb_core.app.static.app_factory import create_app as __create_app
+
+   sdk = __create_app()
+   obb = sdk
    obb.<package-name>.<command-name>()
    ```
 
