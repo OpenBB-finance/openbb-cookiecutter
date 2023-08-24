@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "{{ cookiecutter.project_slug }}"
+name = "{{ cookiecutter.project_tag }}"
 version = "0.1.0"
 description = ""
 authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
@@ -8,15 +8,23 @@ packages = [{ include = "{{ cookiecutter.package_name }}" }]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<3.12"
-openbb-core = { path = "../../sdk/core" }
+openbb-core = "^0.1.2"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-{% if cookiecutter.add_command == "yes" %}
+
 [tool.poetry.plugins."openbb_core_extension"]
 {{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.router:router"
-{% endif %}{% if cookiecutter.add_provider == "yes" %}
+
 [tool.poetry.plugins."openbb_provider_extension"]
-{{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.provider:provider"
-{% endif %}
+{{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}:provider"
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
+
+[[tool.poetry.source]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+priority = "supplemental"
