@@ -1,7 +1,7 @@
 """{{cookiecutter.project_name}} router command example."""
 from typing import List
 
-import pandas as pd
+import requests
 from openbb_core.app.model.command_context import CommandContext
 from openbb_core.app.model.obbject import OBBject
 from openbb_core.app.provider_interface import (
@@ -11,18 +11,39 @@ from openbb_core.app.provider_interface import (
 )
 from openbb_core.app.query import Query
 from openbb_core.app.router import Router
-from openbb_core.app.utils import basemodel_to_df
 from openbb_provider.abstract.data import Data
 from pydantic import BaseModel
 
 router = Router(prefix="")
 
-# The model name can be found inside every provider's `__init__.py` file as part
-# of the `fetcher_dict`.
+
+@router.command(methods=["GET"])
+def get_example(symbol: str = "AAPL") -> OBBject[dict]:
+    """Get options data."""
+    base_url = "https://www.cboe.com/education/tools/trade-optimizer/symbol-info"
+
+    response = requests.get(base_url + f"?symbol={symbol}", timeout=5).json()
+    return OBBject(results=response["details"])
+
+
+@router.command(methods=["POST"])
+def post_example(
+    data: dict,
+    bid_col: str = "bid",
+    ask_col: str = "ask",
+) -> OBBject[dict]:
+    """Calculate mid and spread."""
+    bid = data[bid_col]
+    ask = data[ask_col]
+    mid = (bid + ask) / 2
+    spread = ask - bid
+
+    return OBBject(results={"mid": mid, "spread": spread})
+
 
 # pylint: disable=unused-argument
 @router.command(model="Example")
-def example(
+def model_example(
     cc: CommandContext,
     provider_choices: ProviderChoices,
     standard_params: StandardParams,
@@ -30,16 +51,3 @@ def example(
 ) -> OBBject[BaseModel]:
     """Example Data."""
     return OBBject(results=Query(**locals()).execute())
-
-{% if cookiecutter.process_data == 'yes' %}
-@router.command(methods=["POST"])
-def example_average(
-    data: List[Data],
-    column: str = "close",
-) -> OBBject[List[Data]]:
-    """Compute example average of a column."""
-    df = basemodel_to_df(data)
-
-    results = df[column].mean()
-    return OBBject(results=results)
-{% endif %}
