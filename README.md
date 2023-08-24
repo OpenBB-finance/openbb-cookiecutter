@@ -82,6 +82,12 @@ Before using the Cookiecutter, ensure that you have Python installed on your sys
 
    Go to `http://localhost:8000/docs` to view the API documentation.
 
+   In order to use any of the endpoints available, you'll need to get a valid authorization.
+   You can do it in one of the following ways:
+
+   - Using your [OpenBB Hub](https://my.openbb.co/) account
+   - Use the default user: `openbb` and password: `openbb`
+
 Remember to deactivate the virtual environment when you're finished by running `deactivate` in your terminal.
 
 ## Contributing
