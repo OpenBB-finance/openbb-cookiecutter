@@ -33,10 +33,10 @@ def post_example(
     ask_col: str = "ask",
 ) -> OBBject[List[Data]]:
     """Calculate mid and spread."""
-    bids = data[bid_col]
-    asks = data[ask_col]
-    mid = (bids + asks) / 2
-    spread = asks - bids
+    bid = data[bid_col]
+    ask = data[ask_col]
+    mid = (bid + ask) / 2
+    spread = ask - bid
 
     return OBBject(results={"mid": mid, "spread": spread})
 
