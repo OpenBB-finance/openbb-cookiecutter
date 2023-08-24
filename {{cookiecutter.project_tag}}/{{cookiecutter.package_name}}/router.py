@@ -18,7 +18,7 @@ router = Router(prefix="")
 
 
 @router.command(methods=["GET"])
-def get_example(symbol: str = "AAPL") -> OBBject[List[Data]]:
+def get_example(symbol: str = "AAPL") -> OBBject[dict]:
     """Get options data."""
     base_url = "https://www.cboe.com/education/tools/trade-optimizer/symbol-info"
 
@@ -31,7 +31,7 @@ def post_example(
     data: dict,
     bid_col: str = "bid",
     ask_col: str = "ask",
-) -> OBBject[List[Data]]:
+) -> OBBject[dict]:
     """Calculate mid and spread."""
     bid = data[bid_col]
     ask = data[ask_col]

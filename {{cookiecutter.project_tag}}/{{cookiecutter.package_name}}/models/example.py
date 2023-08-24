@@ -53,7 +53,7 @@ class ExampleData(Data):
 class ExampleFetcher(
     Fetcher[
         ExampleQueryParams,
-        ExampleData,
+        List[ExampleData],
     ]
 ):
     """Example Fetcher class.
