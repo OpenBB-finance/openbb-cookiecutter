@@ -1,5 +1,4 @@
 """{{cookiecutter.project_name}} router command example."""
-from typing import List
 
 import requests
 from openbb_core.app.model.command_context import CommandContext
@@ -11,7 +10,6 @@ from openbb_core.app.provider_interface import (
 )
 from openbb_core.app.query import Query
 from openbb_core.app.router import Router
-from openbb_provider.abstract.data import Data
 from pydantic import BaseModel
 
 router = Router(prefix="")
