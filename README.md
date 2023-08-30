@@ -65,10 +65,10 @@ Before using the Cookiecutter, ensure that you have Python installed on your sys
 4. Import `obb` and use your extension:
 
    ```python
-   import <package-name>
+   import <package_name>
 
-   obb = <package-name>.create_app()
-   obb.<package-name>.<command-name>()
+   obb = <package_name>.create_app()
+   obb.<package_name>.<command_name>()
    exit()
    ```
 
