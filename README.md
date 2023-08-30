@@ -59,7 +59,7 @@ Before using the Cookiecutter, ensure that you have Python installed on your sys
 3. Install your package:
 
    ```shell
-   python -c "import <package-name>; <package-name>.build()"
+   python -c "import <package_name>; <package_name>.build()"
    ```
 
 4. Import `obb` and use your extension:
