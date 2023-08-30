@@ -58,18 +58,16 @@ Before using the Cookiecutter, ensure that you have Python installed on your sys
 
 3. Install your package:
 
-   ```python
-   import <package-name>
-   <package-name>.install()
-   exit()
+   ```shell
+   python -c "import <package-name>; <package-name>.build()"
    ```
 
 4. Import `obb` and use your extension:
 
    ```python
-   from openbb_core.app.static.app_factory import create_app
+   import <package-name>
 
-   obb = create_app()
+   obb = <package-name>.create_app()
    obb.<package-name>.<command-name>()
    exit()
    ```
