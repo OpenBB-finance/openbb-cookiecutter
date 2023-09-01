@@ -12,8 +12,6 @@ The Cookiecutter template prompts the user for information and then generates a 
 - Your Email
 - Extension Name
 - Package Name (the name of the extension's Python package)
-<!--
-Depending on the inputs provided, the structure of the generated project will vary, accommodating the necessary files and directories for your extension. -->
 
 ## Setup
 
@@ -70,6 +68,12 @@ Before using the Cookiecutter, ensure that you have Python installed on your sys
    obb = <package_name>.create_app()
    obb.<package_name>.<command_name>()
    exit()
+   ```
+
+   If your extension requires an API key you can pass it by doing the following:
+
+   ```python
+   obb.user.credentials.<package_name>_<key_name> = <key_value>
    ```
 
 5. To launch the API, run:
