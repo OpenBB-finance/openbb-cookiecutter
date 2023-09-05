@@ -1,6 +1,10 @@
 """{{ cookiecutter.package_name }} OpenBB SDK extension."""
 
+import os
+from pathlib import Path
 from typing import List, Optional, Union
+
+from openbb_core.app.static.build_utils import build as _build
 from openbb_provider.abstract.provider import Provider
 from {{cookiecutter.package_name}}.models.example import ExampleFetcher
 
@@ -21,9 +25,13 @@ provider = Provider(
 )
 
 
+_this_dir = Path(os.path.dirname(os.path.realpath(__file__)))
+
+
 def build(
     modules: Optional[Union[str, List[str]]] = None,
     lint: bool = True,
+    verbose: bool = False,
 ) -> None:
     """Build extension modules.
 
@@ -35,29 +43,16 @@ def build(
         If None, all modules are rebuilt.
     lint : bool, optional
         Whether to lint the code, by default True
+    verbose : bool, optional
+        Enable/disable verbose mode
     """
-    # pylint: disable=import-outside-toplevel
-    import os
-    from pathlib import Path
-    from multiprocessing import Pool
-    from openbb_core.app.static.package_builder import PackageBuilder
 
-    current_dir = Path(os.path.dirname(os.path.realpath(__file__)))
+    _build(directory=_this_dir, modules=modules, lint=lint, verbose=verbose)
 
-    # `build` is running in a separate process. This avoids consecutive calls to this
-    # function in the same interpreter to reuse objects already in memory. Not doing
-    # this was causing docstrings to have repeated sections, for example.
-    with Pool(processes=1) as pool:
-        pool.apply(
-            PackageBuilder(current_dir).build,
-            args=(modules, lint),
-        )
 
 def create_app():
-    from openbb_core.app.static.app_factory import (
-        create_app as __create_app,
-        BaseApp as __BaseApp,
-    )
+    from openbb_core.app.static.app_factory import BaseApp as __BaseApp
+    from openbb_core.app.static.app_factory import create_app as __create_app
 
     try:
         # pylint: disable=import-outside-toplevel
