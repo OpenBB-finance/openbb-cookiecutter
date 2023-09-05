@@ -54,21 +54,16 @@ Before using the Cookiecutter, ensure that you have Python installed on your sys
    poetry install
    ```
 
-3. Install your package:
-
-   ```shell
-   python -c "import <package_name>; <package_name>.build()"
-   ```
-
-4. Import `obb` and use your extension:
+3. Import `obb` and use your extension:
 
    ```python
-   import <package_name>
+   from openbb import obb
 
-   obb = <package_name>.create_app()
-   obb.<package_name>.<command_name>()
+   obb.<package_name>.<command>
    exit()
    ```
+
+   > On first launch, your extension will be automatically recognized and built by the OpenBB SDK v4. If you modify your extension, you can trigger the rebuild by using this command `python -c "import openbb; openbb.build()"`
 
    If your extension requires an API key you can pass it by doing the following:
 
@@ -76,7 +71,7 @@ Before using the Cookiecutter, ensure that you have Python installed on your sys
    obb.user.credentials.<package_name>_<key_name> = <key_value>
    ```
 
-5. To launch the API, run:
+4. To launch the API, run:
 
    ```bash
    uvicorn openbb_core.api.rest_api:app --host 0.0.0.0 --port 8000 --reload
