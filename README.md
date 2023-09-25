@@ -44,7 +44,7 @@ Before using the Cookiecutter, ensure that you have Python installed on your sys
 1. Generate your new project:
 
    ```bash
-   cookiecutter https://github.com/OpenBB-finance/openbb-cookiecutter
+   cookiecutter https://github.com/OpenBB-finance/openbb-cookiecutter --checkout develop
    ```
 
 2. Go into the generated project directory and install the project's dependencies:
