@@ -1,6 +1,6 @@
 """Example Data Integration.
 
-The OpenBB SDK gives developers easy tools for integration.
+The OpenBB Platform gives developers easy tools for integration.
 
 To use it, developers should:
 1. Define the request/query parameters.

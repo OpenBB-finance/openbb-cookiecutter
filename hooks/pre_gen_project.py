@@ -1,4 +1,4 @@
-"""OpenBB SDK Extension pre-generation script."""
+"""OpenBB Platform Extension pre-generation script."""
 
 BANNER = """
 

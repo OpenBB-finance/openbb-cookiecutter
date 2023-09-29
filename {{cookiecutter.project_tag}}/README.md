@@ -1,10 +1,9 @@
-# OpenBB SDK v4 Cookiecutter Template
+# OpenBB Platform v4 Cookiecutter Template
 
 ## Introduction
 
-This is the generated cookiecutter template for the OpenBB SDK v4.
-It is used to help you create a new extension that can be integrated into the existing
-structure of the SDK.
+This is the generated cookiecutter template for the OpenBB Platform v4.
+It is used to help you create a new extension that can be integrated into the existing structure of the OpenBB Platform.
 
 With it you can:
 

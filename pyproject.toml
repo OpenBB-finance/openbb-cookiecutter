@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "openbb-cookiecutter"
 version = "0.1.0"
-description = "Extension template for OpenBB SDK."
+description = "Extension template for OpenBB Platform."
 license = "MIT"
 authors = ["OpenBB Team <hello@openbb.co>"]
 packages = []
