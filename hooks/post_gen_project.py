@@ -1,4 +1,4 @@
-"""OpenBB SDK Extension post-generation script."""
+"""OpenBB Platform Extension post-generation script."""
 
 import re
 import sys

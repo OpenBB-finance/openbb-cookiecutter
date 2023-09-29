@@ -1,4 +1,4 @@
-"""{{ cookiecutter.package_name }} OpenBB SDK extension."""
+"""{{ cookiecutter.package_name }} OpenBB Platform extension."""
 
 import os
 from pathlib import Path
