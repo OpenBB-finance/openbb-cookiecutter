@@ -18,9 +18,9 @@ This file shows an example of how to integrate data from a provider.
 
 from typing import Any, Dict, List, Optional
 
-from openbb_provider.abstract.data import Data
-from openbb_provider.abstract.fetcher import Fetcher
-from openbb_provider.abstract.query_params import QueryParams
+from openbb_core.provider.abstract.data import Data
+from openbb_core.provider.abstract.fetcher import Fetcher
+from openbb_core.provider.abstract.query_params import QueryParams
 from pydantic import Field
 
 

@@ -3,11 +3,8 @@
 import requests
 from openbb_core.app.model.command_context import CommandContext
 from openbb_core.app.model.obbject import OBBject
-from openbb_core.app.provider_interface import (
-    ExtraParams,
-    ProviderChoices,
-    StandardParams,
-)
+from openbb_core.app.provider_interface import (ExtraParams, ProviderChoices,
+                                                StandardParams)
 from openbb_core.app.query import Query
 from openbb_core.app.router import Router
 from pydantic import BaseModel
@@ -16,7 +13,7 @@ router = Router(prefix="")
 
 
 @router.command(methods=["GET"])
-def get_example(symbol: str = "AAPL") -> OBBject[dict]:
+async def get_example(symbol: str = "AAPL") -> OBBject[dict]:
     """Get options data."""
     base_url = "https://www.cboe.com/education/tools/trade-optimizer/symbol-info"
 
@@ -25,7 +22,7 @@ def get_example(symbol: str = "AAPL") -> OBBject[dict]:
 
 
 @router.command(methods=["POST"])
-def post_example(
+async def post_example(
     data: dict,
     bid_col: str = "bid",
     ask_col: str = "ask",
@@ -41,7 +38,7 @@ def post_example(
 
 # pylint: disable=unused-argument
 @router.command(model="Example")
-def model_example(
+async def model_example(
     cc: CommandContext,
     provider_choices: ProviderChoices,
     standard_params: StandardParams,
