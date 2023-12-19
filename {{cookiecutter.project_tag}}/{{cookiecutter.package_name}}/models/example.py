@@ -15,7 +15,7 @@ be entirely custom, or inherit from the OpenBB standardized models.
 
 This file shows an example of how to integrate data from a provider.
 """
-
+# pylint: disable=unused-argument
 from typing import Any, Dict, List, Optional
 
 from openbb_core.provider.abstract.data import Data
@@ -110,7 +110,9 @@ class ExampleFetcher(
         return example_response
 
     @staticmethod
-    def transform_data(data: List[dict]) -> List[ExampleData]:
+    def transform_data(
+        query: ExampleQueryParams, data: List[dict], **kwargs: Any
+    ) -> List[ExampleData]:
         """Define example transform_data.
 
         Right now, we're converting the data to fit our desired format.
