@@ -57,7 +57,7 @@ Before using the Cookiecutter, ensure that you have Python installed on your sys
 3. Import `obb` and use your extension:
 
    ```python
-   from package_name import obb
+   from package_name.openbb import obb
 
    obb.<package_name>.<command>
    exit()
