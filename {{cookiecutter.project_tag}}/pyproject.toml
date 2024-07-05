@@ -8,7 +8,7 @@ packages = [{ include = "{{ cookiecutter.package_name }}" }]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.13"
-openbb = { version = "^4.0.0" }
+openbb-core = { version = "^1.1.2" }
 
 [tool.poetry.group.dev.dependencies]
 openbb-devtools = { version = "^1.0.0" }
@@ -21,4 +21,4 @@ build-backend = "poetry.core.masonry.api"
 {{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.router:router"
 
 [tool.poetry.plugins."openbb_provider_extension"]
-{{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}:provider"
+{{ cookiecutter.package_name }} = "{{ cookiecutter.package_name }}.provider:provider"

@@ -45,4 +45,4 @@ async def model_example(
     extra_params: ExtraParams,
 ) -> OBBject[BaseModel]:
     """Example Data."""
-    return OBBject(results=Query(**locals()).execute())
+    return await OBBject.from_query(Query(**locals()))

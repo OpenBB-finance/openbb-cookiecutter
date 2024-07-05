@@ -16,10 +16,10 @@ With it you can:
 
 We recommend you check out the files in the following order:
 
-- `{{cookiecutter.package_name}}/README.md`
-- `{{cookiecutter.package_name}}/models/example.py`
-- `{{cookiecutter.package_name}}/__init__.py`
-- `{{cookiecutter.package_name}}/router.py`
+* `{{cookiecutter.package_name}}/README.md`
+* `{{cookiecutter.package_name}}/models/example.py`
+* `{{cookiecutter.package_name}}/provider.py`
+* `{{cookiecutter.package_name}}/router.py`
 
 ---
 

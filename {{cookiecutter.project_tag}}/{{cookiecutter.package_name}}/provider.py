@@ -1,4 +1,4 @@
-"""{{ cookiecutter.package_name }} OpenBB Platform extension."""
+"""{{ cookiecutter.package_name }} OpenBB Platform Provider."""
 
 from openbb_core.provider.abstract.provider import Provider
 from {{cookiecutter.package_name}}.models.example import ExampleFetcher

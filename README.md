@@ -57,13 +57,13 @@ Before using the Cookiecutter, ensure that you have Python installed on your sys
 3. Import `obb` and use your extension:
 
    ```python
-   from openbb import obb
+   from package_name.openbb import obb
 
    obb.<package_name>.<command>
    exit()
    ```
 
-   > On first launch, your extension will be automatically recognized and built by the OpenBB Platform v4. If you modify your extension, you can trigger the rebuild by using this command `python -c "import openbb; openbb.build()"`
+   > On first launch, your extension will be automatically recognized and built by the OpenBB Platform v4. If you modify your extension, you can trigger the rebuild by using this command `python -c "import package_name; package_name.build()"`
 
    If your extension requires an API key you can pass it by doing the following:
 
