@@ -3,6 +3,6 @@
   "email": "super@duper.quant",
   "project_name": "Super Quant",
   "project_tag": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
-  "package_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+  "package_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "_template": "{% now 'utc', '%Y%m%d%H%M%S' %}"
 }
