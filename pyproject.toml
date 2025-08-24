@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "openbb-cookiecutter"
-version = "0.2.0"
+version = "0.3.0"
 description = "Extension template for OpenBB Platform."
 license = "MIT"
 authors = ["OpenBB Team <hello@openbb.co>"]
@@ -10,10 +10,10 @@ homepage = "https://openbb.co"
 repository = "https://github.com/OpenBB-finance/openbb-cookiecutter"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.13"
+python = ">=3.9.21,<3.13"
 openbb = "^4.0.0"
-poetry = "^1.7.1"
-cookiecutter = "^2.2.3"
+poetry = "^2.1.4"
+cookiecutter = "^2.6.0"
 
 [build-system]
 requires = ["poetry-core"]
